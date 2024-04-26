@@ -20,7 +20,8 @@ export const createUser = async (req, res) => {
     });
     return res.status(201).json(newUser);
   } catch (error) {
-    console.log(error);
+    console.error("Error Occured when Creating User:", error);
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
 
@@ -30,7 +31,8 @@ export const getAllUsers = async (req, res) => {
 
     return res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    console.error("Error Occured when fetching all users:", error);
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
 
@@ -48,7 +50,8 @@ export const getUser = async (req, res) => {
 
     return res.status(200).json(findUserById);
   } catch (error) {
-    console.log(error);
+    console.error("Error Occured when finding user:", error);
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
 
@@ -89,7 +92,8 @@ export const updateUser = async (req, res) => {
     });
     return res.status(200).json(updateUserById);
   } catch (error) {
-    console.log(error);
+    console.error("Error Occured when Updating user:", error);
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
 
@@ -115,6 +119,7 @@ export const deleteUser = async (req, res) => {
       message: "User deleted",
     });
   } catch (error) {
-    console.log(error);
+    console.error("Error Occured when deleteing user:", error);
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
