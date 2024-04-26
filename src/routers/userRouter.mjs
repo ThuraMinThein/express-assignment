@@ -18,13 +18,13 @@ const router = Router();
 
 router.post("/users", userValidateBodyData(userSchema), createUser);
 router.get("/users", getAllUsers);
-router.get(
+router.get("/users/:id", validateParamData(paramSchema), getUser);
+router.patch(
   "/users/:id",
   validateParamData(paramSchema),
-  validateParamData(paramSchema),
-  getUser
+  userValidateBodyData(userSchema),
+  updateUser
 );
-router.patch("/users/:id", userValidateBodyData(userSchema), updateUser);
 router.delete("/users/:id", validateParamData(paramSchema), deleteUser);
 
 export default router;
